@@ -6,7 +6,7 @@ function Blackboard.WriteSaveGameVersion() end
 
 ---UNKNOWN; param2 is an array of strings
 ---@param pkgName string
----@param param2 table
+---@param param2 string[]
 function Blackboard.AddPackage(pkgName, param2) end
 
 ---Sets the default package?
@@ -24,7 +24,7 @@ function Blackboard.InitDebugGameBlackboard() end
 
 ---Registers a prop with the LUA prefix. returns "LUA:name"
 ---@param name string
----@param type string
+---@param type string the type of the object, i.e. "bool", "int", "base::global::CStrId"
 ---@return string
 function Blackboard.RegisterLUAProp(name, type) end
 
@@ -34,27 +34,32 @@ function Blackboard.RegisterLUAProp(name, type) end
 function Blackboard.ExistsProps(section) end
 
 ---Checks if the section contains the prop key
----@param section any
----@param prop any
+---@param section string
+---@param prop string
 ---@return boolean
 function Blackboard.ExistsProp(section, prop) end
 
 ---Gets the property from the section
 ---@param section string
 ---@param prop string
----@return any
+---@return boolean | float | integer | string
 function Blackboard.GetProp(section, prop) end
 
 ---Sets the property in the section to the given type
 ---@param section string
 ---@param prop string
 ---@param argstring argstring
----@param arg any
+---@param arg boolean | float | integer | string
 ---@return nil
 function Blackboard.SetProp(section, prop, argstring, arg) end
 
+---@alias Blackboards
+---| '"current"'
+---| '"checkpoint"'
+---| '"savedata"'
+
 ---Deletes a section from the given blackboard
----@param blackboard string the blackboard to target (savedata, checkpoint, current)
+---@param blackboard Blackboards
 ---@param section string the section to delete
 function Blackboard.DeleteSection(blackboard, section) end
 
@@ -62,7 +67,7 @@ function Blackboard.DeleteSection(blackboard, section) end
 function Blackboard.Reset() end
 
 ---Re-initializes current blackboard but keeps specific sections
----@param exceptions table array of sections to keep (ie. {"SETTINGS", "ChOZO_ARCHIVES", "ENDING_REWARDS"})
+---@param exceptions string[] array of sections to keep (ie. {"SETTINGS", "CHOZO_ARCHIVES", "ENDING_REWARDS"})
 function Blackboard.ResetWithExceptionList(exceptions) end
 
 ---Dummied.
