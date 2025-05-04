@@ -33,7 +33,8 @@ function ProfileBlackboard.SetProp(section, prop, argstring, arg) end
 function ProfileBlackboard.Reset() end
 
 ---Re-initializes profile blackboard but keeps specific sections
----@param exceptions string[] array of sections to keep (ie. {"SETTINGS", "CHOZO_ARCHIVES", "ENDING_REWARDS"})
+---Used once in vanilla init.lc to reset everything but GAME, SETTINGS, MINIMAP, CHOZO_ARCHIVES, ENDING_REWARDS
+---@param exceptions string[] array of sections to keep
 function ProfileBlackboard.ResetWithExceptionList(exceptions) end
 
 ---Dummied.
